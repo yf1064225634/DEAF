@@ -96,7 +96,6 @@ class adaIN(nn.Module):
         out_mean, out_var = torch.mean(out_in, dim=[1], keepdim=True), torch.var(out_in, dim=[1], keepdim=True)
         out_in = (out_in - out_mean) / torch.sqrt(out_var + self.eps)+out_in
         temp=self.relu(out_in)
-        #可改
         out = temp+input
 
         return out
