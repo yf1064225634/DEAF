@@ -25,6 +25,7 @@ If you have any questions about the models, feel free to engage in technical dis
 ## 3. Directory Structure
 The repository is structured as follows:
 DEAF/
+
 ├── data_provider/
 
 │  &nbsp; &nbsp;├── data_factory.py
@@ -32,40 +33,75 @@ DEAF/
 │  &nbsp; &nbsp;└── data_loader.py
 
 ├── dataset/
+
 │  &nbsp; &nbsp;├── ETT
+
 │  &nbsp; &nbsp;├── EX
+
 │  &nbsp; &nbsp;├── ILL
+
 │  &nbsp; &nbsp;└──  WEA
+
 ├── exp/
+
 │&nbsp; &nbsp; ├── exp_basic.py
+
 │ &nbsp; &nbsp;└── exp_main.py
+
 ├── layers/
+
 │ &nbsp; &nbsp;├── Adain.py
+
 │ &nbsp; &nbsp;├── Adain2.py
+
 │&nbsp; &nbsp; ├── AutoCorrelation.py
+
 │ &nbsp; &nbsp;├── Autoformer_EncDec.py
+
 │&nbsp; &nbsp; ├── DishTS.py
+
 │&nbsp; &nbsp; ├── ECA.py
+
 │ &nbsp; &nbsp;├── Embed.py
+
 │&nbsp; &nbsp; ├── REVIN.py
+
 │&nbsp; &nbsp; ├── SefAttention_Family.py
+
 │&nbsp; &nbsp; └── Transformer_EncDec.py
+
 ├── models/
+
 │ &nbsp; &nbsp;├── Autoformer.py
+
 │ &nbsp; &nbsp;├── DEAF.py
+
 │ &nbsp; &nbsp;├── DLinear.py
+
 │ &nbsp; &nbsp;├── Informer.py
+
 │&nbsp; &nbsp; ├── Linear.py
+
 │&nbsp; &nbsp; ├── NLinear.py
+
 │ &nbsp; &nbsp;├── Stat_models.py
+
 │ &nbsp; &nbsp;└── Tranformer.py
+
 ├── scripts/
+
 ├── utils/
+
 │ &nbsp; &nbsp;├── masking.py
+
 │ &nbsp; &nbsp;├── metrcs.py
+
 │ &nbsp; &nbsp;├── timefeatures.py
+
 │ &nbsp; &nbsp;└── tools.py
+
 └── run.py
+
 └── README.md
 
 ## 4. Directory Structure
