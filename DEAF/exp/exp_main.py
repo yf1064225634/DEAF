@@ -25,7 +25,7 @@ warnings.filterwarnings('ignore')
 class Exp_Main(Exp_Basic):
     def __init__(self, args):
         super(Exp_Main, self).__init__(args)
-        # 模型改进点
+
         self.Dish = DishTS(args)
 
 
@@ -62,7 +62,6 @@ class Exp_Main(Exp_Basic):
             criterion = nn.L1Loss()
         return criterion
 
-#验证
     def vali(self, vali_data, vali_loader, criterion):
         total_loss = []
         self.model.eval()
@@ -78,7 +77,7 @@ class Exp_Main(Exp_Basic):
                 dec_inp = torch.zeros_like(batch_y[:, -self.args.pred_len:, :]).float()
                 dec_inp = torch.cat([batch_y[:, :self.args.label_len, :], dec_inp], dim=1).float().to(self.device)
 
-                #模型改进点
+               
                 batch_x,dec_inp=self.Dish(batch_x=batch_x, mode='forward',dec_inp=dec_inp)
 
                 # encoder - decoder
@@ -102,7 +101,7 @@ class Exp_Main(Exp_Basic):
                 f_dim = -1 if self.args.features == 'MS' else 0
                 outputs = outputs[:, -self.args.pred_len:, f_dim:]
 
-                # 模型改进点
+               
                 outputs=self.Dish(batch_x=outputs, mode='inverse',dec_inp=dec_inp)
                 batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
 
@@ -121,7 +120,7 @@ class Exp_Main(Exp_Basic):
 
 
 
-#训练
+
     def train(self, setting):
         train_data, train_loader = self._get_data(flag='train')
         if not self.args.train_only:
@@ -158,7 +157,7 @@ class Exp_Main(Exp_Basic):
                 dec_inp = torch.cat([batch_y[:, :self.args.label_len, :], dec_inp], dim=1).float().to(self.device)
 
 
-                # 模型改进点
+                
                 batch_x,dec_inp=self.Dish(batch_x=batch_x, mode='forward',dec_inp=dec_inp)
 
                 # encoder - decoder
@@ -189,7 +188,7 @@ class Exp_Main(Exp_Basic):
                     # print(outputs.shape,batch_y.shape)
                     f_dim = -1 if self.args.features == 'MS' else 0
                     outputs = outputs[:, -self.args.pred_len:, f_dim:]
-                    # 模型改进点
+                
                     outputs = self.Dish(batch_x=outputs, mode='inverse', dec_inp=dec_inp)
 
                     batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
@@ -241,7 +240,6 @@ class Exp_Main(Exp_Basic):
 
 
 
-#测试
     def test(self, setting, test=0):
         test_data, test_loader = self._get_data(flag='test')
 
@@ -295,7 +293,7 @@ class Exp_Main(Exp_Basic):
                 f_dim = -1 if self.args.features == 'MS' else 0
                 # print(outputs.shape,batch_y.shape)
                 outputs = outputs[:, -self.args.pred_len:, f_dim:]
-                # 模型改进点
+               
                 outputs = self.Dish(batch_x=outputs, mode='inverse', dec_inp=dec_inp)
 
                 batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
@@ -308,7 +306,7 @@ class Exp_Main(Exp_Basic):
                 preds.append(pred)
                 trues.append(true)
                 inputx.append(batch_x.detach().cpu().numpy())
-                #可视化
+              
                 # if i % 20 == 0:
                 #     input = batch_x.detach().cpu().numpy()
                 #     gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
