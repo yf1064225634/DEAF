@@ -26,8 +26,11 @@ If you have any questions about the models, feel free to engage in technical dis
 The repository is structured as follows:
 DEAF/
 ├── data_provider/
+
 │  &nbsp; &nbsp;├── data_factory.py
+
 │  &nbsp; &nbsp;└── data_loader.py
+
 ├── dataset/
 │  &nbsp; &nbsp;├── ETT
 │  &nbsp; &nbsp;├── EX
